@@ -23,9 +23,9 @@ def process_frames(frames: List[Dict[str, Any]]) -> pd.DataFrame:
         
         # 使用新的字段名: dx_ned, dy_ned, dz_ned
         gt_dist = gt_rel.get('distance')
-        gt_lat = gt_rel.get('dx_ned')  # 横向 (NED坐标系)
-        gt_lon = gt_rel.get('dy_ned')  # 纵向 (NED坐标系)
-        gt_h = gt_rel.get('dz_ned')    # 高度 (NED坐标系)
+        gt_lat = gt_rel.get('dy_ned')  # 侧向 = Y轴 = 东/右 (NED坐标系)
+        gt_lon = gt_rel.get('dx_ned')  # 纵向 = X轴 = 北/前 (NED坐标系)
+        gt_h = gt_rel.get('dz_ned')    # 高度 = Z轴 = 下 (NED坐标系)
         gt_yaw = gt_att.get('yaw')
         gt_pitch = gt_att.get('pitch')
         
@@ -36,9 +36,9 @@ def process_frames(frames: List[Dict[str, Any]]) -> pd.DataFrame:
         # Algorithm Output
         algo = frame.get('algorithm_output', {})
         algo_dist = algo.get('distance')
-        algo_lat = algo.get('dx_ned')   # 横向 (NED坐标系)
-        algo_lon = algo.get('dy_ned')   # 纵向 (NED坐标系)
-        algo_h = algo.get('dz_ned')     # 高度 (NED坐标系)
+        algo_lat = algo.get('dy_ned')   # 侧向 = Y轴 = 东/右 (NED坐标系)
+        algo_lon = algo.get('dx_ned')   # 纵向 = X轴 = 北/前 (NED坐标系)
+        algo_h = algo.get('dz_ned')     # 高度 = Z轴 = 下 (NED坐标系)
         algo_dyaw = algo.get('dyaw')    # 算法输出的偏航光轴偏差角 (度)
         algo_dpitch = algo.get('dpitch') # 算法输出的俯仰光轴偏差角 (度)
         
